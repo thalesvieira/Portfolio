@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thales Von Arnt — Data Analyst Portfolio Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0f1117;
+            --bg-card: #1a1d27;
+            --bg-card-hover: #222633;
+            --bg-surface: #141722;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.25);
+            --accent2: #8b5cf6;
+            --accent3: #06b6d4;
+            --accent4: #f59e0b;
+            --accent5: #10b981;
+            --accent6: #ef4444;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --border: rgba(255, 255, 255, 0.06);
+            --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --gradient-2: linear-gradient(135deg, #06b6d4, #3b82f6);
+            --gradient-3: linear-gradient(135deg, #10b981, #06b6d4);
+            --gradient-4: linear-gradient(135deg, #f59e0b, #ef4444);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === ANIMATED BG === */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-1 {
+            top: -200px;
+            left: -200px;
+            background: var(--accent);
+        }
+
+        .bg-glow-2 {
+            bottom: -200px;
+            right: -200px;
+            background: var(--accent2);
+        }
+
+        /* === LAYOUT === */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === HERO === */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 20px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            animation: fadeInDown 0.6s 0.1s ease both;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            animation: fadeInDown 0.6s 0.2s ease both;
+        }
+
+        .hero-subtitle span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .hero-contact {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInDown 0.6s 0.3s ease both;
+        }
+
+        .hero-contact a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .hero-contact a:hover {
+            color: var(--accent);
+        }
+
+        /* === KPI STRIP === */
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .kpi-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .kpi-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .kpi-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .kpi-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .kpi-card:nth-child(1)::before {
+            background: var(--gradient-1);
+        }
+
+        .kpi-card:nth-child(2)::before {
+            background: var(--gradient-2);
+        }
+
+        .kpi-card:nth-child(3)::before {
+            background: var(--gradient-3);
+        }
+
+        .kpi-card:nth-child(4)::before {
+            background: var(--gradient-4);
+        }
+
+        .kpi-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .kpi-value {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 4px;
+        }
+
+        .kpi-card:nth-child(1) .kpi-value {
+            color: var(--accent);
+        }
+
+        .kpi-card:nth-child(2) .kpi-value {
+            color: var(--accent3);
+        }
+
+        .kpi-card:nth-child(3) .kpi-value {
+            color: var(--accent5);
+        }
+
+        .kpi-card:nth-child(4) .kpi-value {
+            color: var(--accent4);
+        }
+
+        .kpi-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* === SECTION === */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .section-header .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header .line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* === CHARTS GRID === */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: border-color 0.3s;
+        }
+
+        .chart-card:hover {
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .chart-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 260px;
+        }
+
+        .chart-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .chart-card.full-width .chart-wrapper {
+            height: 200px;
+        }
+
+        /* === ABOUT === */
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+        }
+
+        .about-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .about-card strong {
+            color: var(--text);
+        }
+
+        /* === SKILLS RADAR + BARS === */
+        .skills-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .skill-bars-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .skill-bars-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-bar-item {
+            margin-bottom: 16px;
+        }
+
+        .skill-bar-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .skill-bar-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .skill-bar-pct {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .skill-bar-track {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 99px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* === TIMELINE === */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3), var(--accent5));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+            animation: fadeInLeft 0.5s ease both;
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .timeline-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 6px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-dot-inner {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(1) .timeline-dot {
+            background: var(--accent);
+        }
+
+        .timeline-item:nth-child(1) .timeline-dot-inner {
+            background: white;
+        }
+
+        .timeline-item:nth-child(2) .timeline-dot {
+            background: var(--accent2);
+        }
+
+        .timeline-item:nth-child(2) .timeline-dot-inner {
+            background: white;
+        }
+
+        .timeline-item:nth-child(3) .timeline-dot {
+            background: var(--accent3);
+        }
+
+        .timeline-item:nth-child(3) .timeline-dot-inner {
+            background: white;
+        }
+
+        .timeline-item:nth-child(4) .timeline-dot {
+            background: var(--accent5);
+        }
+
+        .timeline-item:nth-child(4) .timeline-dot-inner {
+            background: white;
+        }
+
+        .timeline-item:nth-child(5) .timeline-dot {
+            background: var(--accent4);
+        }
+
+        .timeline-item:nth-child(5) .timeline-dot-inner {
+            background: white;
+        }
+
+        .timeline-item:nth-child(6) .timeline-dot {
+            background: var(--accent6);
+        }
+
+        .timeline-item:nth-child(6) .timeline-dot-inner {
+            background: white;
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(6px);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timeline-role {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .timeline-period {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+            padding: 4px 12px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .timeline-company {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .timeline-company .loc {
+            font-weight: 400;
+            color: var(--text-dim);
+        }
+
+        .timeline-bullets {
+            list-style: none;
+        }
+
+        .timeline-bullets li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .timeline-bullets li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .timeline-bullets li strong {
+            color: var(--text);
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .timeline-tag {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-dim);
+        }
+
+        /* === EDUCATION === */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: border-color 0.3s;
+        }
+
+        .edu-card:hover {
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .edu-card .edu-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .edu-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .edu-card .edu-school {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .edu-card .edu-period {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .edu-card .edu-badge {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent5);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* === FOOTER === */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-dim);
+            font-size: 12px;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .kpi-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-section {
+                grid-template-columns: 1fr;
+            }
+
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .kpi-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Aberto a novas oportunidades
+            </div>
+            <h1>Thales Von Arnt</h1>
+            <p class="hero-subtitle">
+                <span>Data Analyst</span> · RPA Developer · <span>Power BI</span> · Python · Business Intelligence
+            </p>
+            <div class="hero-contact">
+                <a href="mailto:thalesvieira1998@hotmail.com">📧 thalesvieira1998@hotmail.com</a>
+                <a href="https://linkedin.com/in/thales-von-arnt" target="_blank">🔗 linkedin.com/in/thales-von-arnt</a>
+                <a>📍 Porto Alegre – RS, Brasil</a>
+            </div>
+        </section>
+
+        <!-- KPI STRIP -->
+        <section class="kpi-strip">
+            <div class="kpi-card">
+                <div class="kpi-icon">📊</div>
+                <div class="kpi-value" data-target="6" data-suffix="+">0</div>
+                <div class="kpi-label">Anos de Experiência</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🏢</div>
+                <div class="kpi-value" data-target="6">0</div>
+                <div class="kpi-label">Empresas</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🤖</div>
+                <div class="kpi-value" data-target="50" data-suffix="+">0</div>
+                <div class="kpi-label">Automações RPA</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📈</div>
+                <div class="kpi-value" data-target="8">0</div>
+                <div class="kpi-label">Tecnologias Dominadas</div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section animate-on-scroll">
+            <div class="section-header">
+                <div class="icon" style="background:rgba(59,130,246,0.1);">👤</div>
+                <h2>Sobre</h2>
+                <div class="line"></div>
+            </div>
+            <div class="about-card">
+                <p>
+                    Analista de Dados com <strong>+6 anos de experiência em tecnologia</strong>, especializado em
+                    <strong>Business Intelligence</strong>, automação de processos (<strong>RPA</strong>) e construção
+                    de
+                    pipelines de dados de ponta a ponta. Na <strong>TK Elevator</strong>, sou responsável por estruturar
+                    toda a cadeia de dados — desde a <strong>extração automatizada via RPA com Python</strong>, passando
+                    pela modelagem e transformação (<strong>ETL</strong>), até a entrega de <strong>dashboards
+                        estratégicos
+                        em Power BI</strong> que direcionam a tomada de decisão da companhia. Também possuo vivência
+                    como
+                    <strong>Desenvolvedor C#/.NET</strong>, com foco em sistemas ERP, integrações via APIs e
+                    administração
+                    de bancos de dados <strong>SQL Server</strong> e <strong>MySQL</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- CHARTS -->
+        <section class="section animate-on-scroll">
+            <div class="section-header">
+                <div class="icon" style="background:rgba(139,92,246,0.1);">📊</div>
+                <h2>Visão Analítica da Carreira</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="charts-grid">
+                <!-- Radar: Skill Proficiency -->
+                <div class="chart-card">
+                    <h3>Proficiência por Tecnologia</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Doughnut: Time Distribution -->
+                <div class="chart-card">
+                    <h3>Distribuição por Área de Atuação</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Bar: Project Impact -->
+                <div class="chart-card full-width">
+                    <h3>Evolução de Stack Tecnológico ao Longo da Carreira</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="stackChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section animate-on-scroll">
+            <div class="section-header">
+                <div class="icon" style="background:rgba(6,182,212,0.1);">⚡</div>
+                <h2>Competências Técnicas</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="skills-section">
+                <div class="skill-bars-card">
+                    <h3>Data & Automação</h3>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Power BI (DAX, Power Query)</span>
+                            <span class="skill-bar-pct">95%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="95" style="background:var(--gradient-1)"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Python (Pandas, Selenium, APIs)</span>
+                            <span class="skill-bar-pct">90%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="90" style="background:var(--gradient-2)"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">RPA — Robotic Process Automation</span>
+                            <span class="skill-bar-pct">92%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="92" style="background:var(--gradient-3)"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">ETL / Data Pipeline</span>
+                            <span class="skill-bar-pct">88%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="88" style="background:var(--gradient-4)"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">SQL (SQL Server, MySQL)</span>
+                            <span class="skill-bar-pct">90%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="90" style="background:var(--gradient-1)"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-bars-card">
+                    <h3>Desenvolvimento</h3>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">C# / .NET Framework</span>
+                            <span class="skill-bar-pct">82%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="82" style="background:var(--gradient-2)"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">REST API / Integrações</span>
+                            <span class="skill-bar-pct">88%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="88" style="background:var(--gradient-1)"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Git / GitHub / Versionamento</span>
+                            <span class="skill-bar-pct">85%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="85" style="background:var(--gradient-3)"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Amazon S3 / AWS</span>
+                            <span class="skill-bar-pct">65%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="65" style="background:var(--gradient-4)"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Java / PHP</span>
+                            <span class="skill-bar-pct">60%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="60" style="background:var(--gradient-2)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE TIMELINE -->
+        <section class="section animate-on-scroll">
+            <div class="section-header">
+                <div class="icon" style="background:rgba(245,158,11,0.1);">💼</div>
+                <h2>Experiência Profissional</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-role">Analista de Dados | RPA | BI | ETL</span>
+                            <span class="timeline-period">Jun 2025 – Presente</span>
+                        </div>
+                        <div class="timeline-company">TK Elevator <span class="loc">· Porto Alegre, RS</span></div>
+                        <ul class="timeline-bullets">
+                            <li>Estruturei o <strong>pipeline de dados</strong> da operação, automatizando a extração
+                                via <strong>RPA com Python</strong> e garantindo qualidade e consistência.</li>
+                            <li>Desenvolvi <strong>dashboards estratégicos em Power BI</strong> que impulsionam a
+                                otimização de processos e a tomada de decisão.</li>
+                            <li>Responsável pelo ciclo completo: <strong>extração → transformação (ETL) → visualização →
+                                    análise</strong>.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Power BI</span>
+                            <span class="timeline-tag">RPA</span>
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">ETL</span>
+                            <span class="timeline-tag">Data Pipeline</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-role">Analista de Sistemas | C# | .NET</span>
+                            <span class="timeline-period">Nov 2022 – Abr 2024</span>
+                        </div>
+                        <div class="timeline-company">SKA Automação de Engenharias <span class="loc">· São Leopoldo,
+                                RS</span></div>
+                        <ul class="timeline-bullets">
+                            <li>Desenvolvimento e manutenção de módulos no sistema <strong>ERP</strong> utilizando
+                                <strong>C#</strong> e <strong>.NET Framework</strong>.</li>
+                            <li>Implementação de melhorias e <strong>automações</strong> para reduzir esforço
+                                operacional dos clientes.</li>
+                            <li>Administração e otimização de consultas em <strong>SQL Server</strong>.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">C#</span>
+                            <span class="timeline-tag">.NET</span>
+                            <span class="timeline-tag">SQL Server</span>
+                            <span class="timeline-tag">ERP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-role">Desenvolvedor | RPA | Python</span>
+                            <span class="timeline-period">Mai 2021 – Dez 2022</span>
+                        </div>
+                        <div class="timeline-company">Grupo Gold Club <span class="loc">· Porto Alegre, RS</span></div>
+                        <ul class="timeline-bullets">
+                            <li>Ciclo completo de integrações via <strong>APIs REST</strong> (vendas e sistemas fiscais)
+                                com <strong>Python</strong>.</li>
+                            <li>Administração de banco de dados <strong>MySQL</strong> e garantia de performance.</li>
+                            <li>Gerenciamento de código com <strong>Git/GitHub</strong> e suporte técnico a clientes.
+                            </li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">API REST</span>
+                            <span class="timeline-tag">MySQL</span>
+                            <span class="timeline-tag">Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-role">Desenvolvedor RPA | Python</span>
+                            <span class="timeline-period">Mar 2022 – Out 2022</span>
+                        </div>
+                        <div class="timeline-company">Agger <span class="loc">· Novo Hamburgo, RS</span></div>
+                        <ul class="timeline-bullets">
+                            <li>Criação e manutenção de <strong>robôs RPA com Python</strong> para otimização de
+                                processos de corretores.</li>
+                            <li>Ciclo de vida completo das automações: desenvolvimento, <strong>troubleshooting</strong>
+                                e correção.</li>
+                            <li>Utilização de <strong>Amazon S3</strong> para consulta e validação de dados e logs.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">RPA</span>
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">Amazon S3</span>
+                            <span class="timeline-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-role">Desenvolvedor Web | PHP</span>
+                            <span class="timeline-period">Jul 2018 – Mar 2021</span>
+                        </div>
+                        <div class="timeline-company">Happy Saúde <span class="loc">· Porto Alegre, RS</span></div>
+                        <ul class="timeline-bullets">
+                            <li>Desenvolvimento web com <strong>Scriptcase (PHP)</strong> — formulários, grids e
+                                melhorias.</li>
+                            <li>Correções no app mobile e administração de banco de dados <strong>MySQL</strong>.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">PHP</span>
+                            <span class="timeline-tag">MySQL</span>
+                            <span class="timeline-tag">Scriptcase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-inner"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-role">Estagiário Desenvolvedor | Java</span>
+                            <span class="timeline-period">Fev 2017 – Mar 2018</span>
+                        </div>
+                        <div class="timeline-company">Connect Inc. Big Data Solutions</div>
+                        <ul class="timeline-bullets">
+                            <li>Desenvolvimento de integrações com <strong>Web Services (REST e SOAP)</strong> e
+                                <strong>Talend</strong>.</li>
+                            <li>Automação de processos de produtos e pedidos com <strong>Java</strong>.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Java</span>
+                            <span class="timeline-tag">REST</span>
+                            <span class="timeline-tag">SOAP</span>
+                            <span class="timeline-tag">Talend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section animate-on-scroll">
+            <div class="section-header">
+                <div class="icon" style="background:rgba(16,185,129,0.1);">🎓</div>
+                <h2>Formação Acadêmica</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-icon">🧠</div>
+                    <h4>Inteligência Artificial e Machine Learning</h4>
+                    <p class="edu-school">UNIASSELVI</p>
+                    <p class="edu-period">2025 – 2027</p>
+                    <span class="edu-badge">Em andamento</span>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-icon">💻</div>
+                    <h4>Técnico em Informática</h4>
+                    <p class="edu-school">E.E.E.P. Dr. Solon Tavares</p>
+                    <p class="edu-period">2016 – 2018</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Feito por <strong>Thales Von Arnt</strong> · <a href="https://linkedin.com/in/thales-von-arnt"
+                    target="_blank">LinkedIn</a> · 2026</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // =========================================
+        // COUNTER ANIMATION
+        // =========================================
+        function animateCounters() {
+            document.querySelectorAll('.kpi-value').forEach(el => {
+                const target = parseInt(el.dataset.target);
+                const suffix = el.dataset.suffix || '';
+                const duration = 1800;
+                const start = performance.now();
+
+                function tick(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.round(target * eased) + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            });
+        }
+
+        // =========================================
+        // SKILL BAR ANIMATION
+        // =========================================
+        function animateSkillBars() {
+            document.querySelectorAll('.skill-bar-fill').forEach(el => {
+                const width = el.dataset.width;
+                setTimeout(() => { el.style.width = width + '%'; }, 300);
+            });
+        }
+
+        // =========================================
+        // SCROLL ANIMATIONS
+        // =========================================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // =========================================
+        // CHARTS
+        // =========================================
+        const chartFont = { family: "'Inter', sans-serif" };
+        const gridColor = 'rgba(255,255,255,0.05)';
+        const tickColor = '#64748b';
+
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#94a3b8';
+
+        // --- Radar Chart ---
+        new Chart(document.getElementById('radarChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Power BI', 'Python', 'RPA', 'SQL', 'ETL', 'C# / .NET', 'API REST', 'Cloud (AWS)'],
+                datasets: [{
+                    label: 'Nível de Proficiência',
+                    data: [95, 90, 92, 90, 88, 82, 88, 65],
+                    backgroundColor: 'rgba(59,130,246,0.15)',
+                    borderColor: '#3b82f6',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20,
+                            color: tickColor,
+                            backdropColor: 'transparent',
+                            font: { size: 10 }
+                        },
+                        grid: { color: gridColor },
+                        angleLines: { color: gridColor },
+                        pointLabels: {
+                            color: '#94a3b8',
+                            font: { size: 11, weight: '500' }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // --- Doughnut Chart ---
+        new Chart(document.getElementById('doughnutChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Data Analysis & BI', 'RPA & Automação', 'Desenvolvimento (C#, Python)', 'Web Dev (PHP, Java)', 'Integrações & APIs'],
+                datasets: [{
+                    data: [30, 25, 20, 15, 10],
+                    backgroundColor: [
+                        '#3b82f6',
+                        '#8b5cf6',
+                        '#06b6d4',
+                        '#10b981',
+                        '#f59e0b'
+                    ],
+                    borderColor: '#1a1d27',
+                    borderWidth: 3,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: '#94a3b8',
+                            padding: 12,
+                            usePointStyle: true,
+                            pointStyle: 'circle',
+                            font: { size: 11 }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- Stacked Bar (Tech Evolution) ---
+        new Chart(document.getElementById('stackChart'), {
+            type: 'bar',
+            data: {
+                labels: ['2017-2018', '2018-2021', '2021-2022', '2022', '2022-2024', '2025+'],
+                datasets: [
+                    {
+                        label: 'Java / PHP',
+                        data: [80, 70, 10, 0, 0, 0],
+                        backgroundColor: '#ef4444',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Python / RPA',
+                        data: [0, 0, 80, 90, 10, 60],
+                        backgroundColor: '#8b5cf6',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'C# / .NET',
+                        data: [0, 0, 0, 0, 80, 5],
+                        backgroundColor: '#06b6d4',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'SQL / Dados',
+                        data: [20, 30, 40, 30, 40, 50],
+                        backgroundColor: '#3b82f6',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Power BI / BI',
+                        data: [0, 0, 0, 0, 10, 80],
+                        backgroundColor: '#f59e0b',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        grid: { display: false },
+                        ticks: { color: tickColor, font: { size: 11 } }
+                    },
+                    y: {
+                        stacked: true,
+                        max: 200,
+                        grid: { color: gridColor },
+                        ticks: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#94a3b8',
+                            padding: 14,
+                            usePointStyle: true,
+                            pointStyle: 'circle',
+                            font: { size: 11 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => `${ctx.dataset.label}: ${ctx.raw}% dedicação`
+                        }
+                    }
+                }
+            }
+        });
+
+        // =========================================
+        // INIT
+        // =========================================
+        window.addEventListener('load', () => {
+            animateCounters();
+            animateSkillBars();
+        });
+    </script>
+
+</body>
+
+</html>
