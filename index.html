@@ -296,6 +296,78 @@
             height: 20px;
         }
 
+        .btn-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+            padding: 8px 18px;
+            border-radius: 99px;
+            font-size: 13.5px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-linkedin:hover {
+            transform: translateY(-2px);
+            background: rgba(139, 92, 246, 0.2);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 8px 18px;
+            border-radius: 99px;
+            font-size: 13.5px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            background: rgba(16, 185, 129, 0.2);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+            color: #fff;
+            border-color: #10b981;
+        }
+
+        .btn-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--accent2);
+            padding: 8px 18px;
+            border-radius: 99px;
+            font-size: 13.5px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-email:hover {
+            transform: translateY(-2px);
+            background: rgba(249, 115, 22, 0.2);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3);
+            color: #fff;
+            border-color: var(--accent2);
+        }
+
         /* === KPI STRIP === */
         .kpi-strip {
             display: grid;
@@ -1109,9 +1181,9 @@
                 <span>Data Analyst</span> · RPA Developer · <span>Power BI</span> · Python · Business Intelligence
             </p>
             <div class="hero-contact">
-                <a href="mailto:thalesvieira1998@hotmail.com">📧 thalesvieira1998@hotmail.com</a>
-                <a href="https://linkedin.com/in/thales-von-arnt" target="_blank">🔗 linkedin.com/in/thales-von-arnt</a>
-                <a>📍 Porto Alegre – RS, Brasil</a>
+                <a href="mailto:thalesvieira1998@hotmail.com" class="btn-email">📧 E-mail</a>
+                <a href="https://linkedin.com/in/thales-von-arnt" target="_blank" class="btn-linkedin">🔗 LinkedIn</a>
+                <a href="https://wa.me/5551995223222" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>
             </div>
             <div class="hero-actions">
                 <a href="Curriculo%20Thales%20Von%20Arnt.pdf" target="_blank" class="btn-primary"
@@ -1222,24 +1294,25 @@
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">🔄</div>
-                        <div class="project-title">Pipeline ETL & Transf. de Dados Fiscais (SAP)</div>
+                        <div class="project-title">Pipeline de Dados e Otimização Financeira</div>
                     </div>
 
                     <div class="project-desc-group">
                         <strong>O Problema:</strong>
-                        <p>Bases brutas do SAP com formatos incompatíveis e lentidão extrema para correlacionar volumes
-                            de operações (COMEX/Importação/Exportação) com os Centros de Custo financeiros.</p>
+                        <p>Fontes de dados brutas de sistemas ERP com formatos incompatíveis e lentidão extrema para
+                            correlacionar volumes de operações financeiras complexas.</p>
                     </div>
                     <div class="project-desc-group">
                         <strong>A Solução:</strong>
-                        <p>Desenvolvimento de um script robusto em Python que consome extrações brutas,
-                            normaliza calendários convertendo-os dinamicamente em Ano/Período Fiscal, cruza múltiplos
-                            DataFrames e calcula o custo unitário em tempo recorde.</p>
+                        <p>Desenvolvimento de scripts robustos em Python para limpeza e processamento, que realizam a
+                            ingestão de dados, normalizam calendários operacionais dinamicamente e efetuam cruzamentos
+                            complexos calculando custos unitários de forma automatizada.</p>
                     </div>
 
                     <div class="project-impact">
-                        <strong>Impacto:</strong> Transformou um processo de conciliação financeira de dias para
-                        minutos, gerando dados 100% limpos e parametrizados direto para a diretoria através do Power BI.
+                        <strong>Impacto:</strong> Transformou rotinas repetitivas de dias em minutos, viabilizando
+                        análises limpas em tempo real e permitindo tomada de decisão executiva precisa através de uma
+                        esteira de dados sólida.
                     </div>
 
                     <div class="project-tags">
@@ -1254,24 +1327,25 @@
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">🤖</div>
-                        <div class="project-title">Ecossistema RPA Resiliente (Web & Desktop)</div>
+                        <div class="project-title">Ecossistema de Automação (RPA)</div>
                     </div>
 
                     <div class="project-desc-group">
                         <strong>O Problema:</strong>
-                        <p>Extração manual, repetitiva e morosa de relatórios críticos de sistemas legados (como SAP
-                            GUI) e portais corporativos complexos.</p>
+                        <p>Extração manual e altamente repetitiva de relatórios processuais em diversos sistemas legados
+                            e portais corporativos complexos, gerando gargalos na operação.</p>
                     </div>
                     <div class="project-desc-group">
                         <strong>A Solução:</strong>
-                        <p>Arquitetura de robôs em Python/Selenium autônomos. A infraestrutura conta com
-                            criptografia em memória para credenciais, gestão avançada de Logging e esperas explícitas
-                            customizadas para contornar gargalos e lentidão nas plataformas.</p>
+                        <p>Desenho técnico e arquitetura de robôs em Python/Selenium totalmente autônomos. A
+                            infraestrutura interage simulando comportamento humano em fluxos complexos, aplicando
+                            criptografia em memória e fluxos de exceções avançados.</p>
                     </div>
 
                     <div class="project-impact">
-                        <strong>Impacto:</strong> Automação fim-a-fim de rotinas críticas
-                        rodando 24/7 sem falhas, poupando estimadas milhares de horas anuais da operação.
+                        <strong>Impacto:</strong> Automação fim-a-fim escalável operando sem falhas continuamente,
+                        reduzindo riscos operacionais de erro humano e poupando milhares de horas anuais do time de
+                        backoffice.
                     </div>
 
                     <div class="project-tags">
@@ -1286,25 +1360,25 @@
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">📈</div>
-                        <div class="project-title">Dashboards Estratégicos & BI</div>
+                        <div class="project-title">Soluções de BI e Analytics</div>
                     </div>
 
                     <div class="project-desc-group">
                         <strong>O Problema:</strong>
-                        <p>Decisões executivas tomadas no escuro devido ao excesso de relatórios estáticos em planilhas
-                            não consolidadas.</p>
+                        <p>Dificuldade no direcionamento executivo e estratégico provocado por excesso de informações
+                            descentralizadas em planilhas estáticas.</p>
                     </div>
                     <div class="project-desc-group">
                         <strong>A Solução:</strong>
-                        <p>Estruturação de Dataflows avançados utilizando Power Query e DAX focado em performance.
-                            Modelagem star-schema consumindo outputs dos RPAs para gerar painéis executivos com UX
-                            focado em storytelling de dados.</p>
+                        <p>Estruturação de relatórios inteligentes com uso de avançada modelagem dimensional e automação
+                            de ingestão via integração com aplicações bot. Foco contínuo em regras de negócio apuradas e
+                            uma experiência de storytelling amigável.</p>
                     </div>
 
                     <div class="project-impact">
-                        <strong>Impacto:</strong> Transparência total da rentabilidade de operações,
-                        guiando a tomada de decisão gerencial com métricas em tempo real, drill-downs e cruzamento de
-                        metadados logísticos.
+                        <strong>Impacto:</strong> Eliminação dos pontos cegos da cadeia operacional, municiando a gestão
+                        com indicativos gerenciais ao vivo, interativos e facilmente auditáveis, catalisando ações
+                        logísticas precisas.
                     </div>
 
                     <div class="project-tags">
@@ -1773,31 +1847,31 @@
                     {
                         label: 'Java / PHP',
                         data: [80, 80, 0, 0, 0, 0],
-                        backgroundColor: '#ef4444',
+                        backgroundColor: '#fb923c', // Laranja claro
                         borderRadius: 4
                     },
                     {
                         label: 'Python / RPA',
                         data: [0, 0, 70, 80, 5, 35],
-                        backgroundColor: '#8b5cf6',
+                        backgroundColor: '#8b5cf6', // Roxo base
                         borderRadius: 4
                     },
                     {
                         label: 'C# / .NET',
                         data: [0, 0, 0, 0, 65, 0],
-                        backgroundColor: '#c084fc',
+                        backgroundColor: '#c084fc', // Lilás
                         borderRadius: 4
                     },
                     {
                         label: 'SQL / Dados',
                         data: [20, 20, 30, 20, 20, 20],
-                        backgroundColor: '#8b5cf6',
+                        backgroundColor: '#d946ef', // Rosa/Roxo
                         borderRadius: 4
                     },
                     {
                         label: 'Power BI / BI',
                         data: [0, 0, 0, 0, 10, 45],
-                        backgroundColor: '#f59e0b',
+                        backgroundColor: '#f97316', // Laranja forte
                         borderRadius: 4
                     }
                 ]
