@@ -1,4 +1,4 @@
-# 📊 Data Analyst & RPA Portfolio — Thales Von Arnt
+# 📊 Data Analyst & RPA Portfólio — Thales Von Arnt
 
 Este repositório contém o código-fonte do meu portfólio profissional, desenvolvido em HTML/CSS com visualização de dados dinâmica utilizando **Chart.js**. O objetivo é demonstrar minha jornada técnica, proficiência em ferramentas de BI e impacto gerado através de automações.
 
