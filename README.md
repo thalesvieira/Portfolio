@@ -2,7 +2,7 @@
 
 Este repositório contém o código-fonte do meu portfólio profissional, desenvolvido em HTML/CSS com visualização de dados dinâmica utilizando **Chart.js**. O objetivo é demonstrar minha jornada técnica, proficiência em ferramentas de BI e impacto gerado através de automações.
 
-📍 **Acesse o portfólio online:** [https://thalesvieira.github.io/curriculo/]
+📍 **Acesse o portfólio online:** [https://thalesvieira.github.io/Portfolio/]
 
 ---
 
